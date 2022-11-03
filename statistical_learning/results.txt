@@ -1,0 +1,598 @@
+
+
+Splitting Training Data into Train set and Val set in 4:1 Ratio.
+  -Shape of X_train: (114890, 8)
+  -Shape of X_val: (28723, 8)
+Splitting Done!!
+
+
+Started Training Classifiers
+Classifiers Trained!!
+
+
+Showing Results
+
+  -Bag of Words
+
+
+    -lemmatized_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.82      0.50      0.62      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.79      0.60      0.68      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.70      0.44      0.54      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.95      0.99      0.97     25803
+
+    micro avg       0.93      0.88      0.91     32175
+    macro avg       0.47      0.36      0.40     32175
+ weighted avg       0.90      0.88      0.89     32175
+  samples avg       0.93      0.93      0.93     32175
+
+
+ toxic
+[[25658   297]
+ [ 1388  1380]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26948   237]
+ [  622   916]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[26998   281]
+ [  803   641]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[ 1522  1398]
+ [  286 25517]]
+
+Macro ROC_AUC Score = 0.644123314945717
+
+
+    -lemmatized_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.77      0.44      0.56      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.79      0.52      0.63      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.62      0.34      0.44      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.94      0.99      0.96     25803
+
+    micro avg       0.92      0.87      0.89     32175
+    macro avg       0.45      0.33      0.37     32175
+ weighted avg       0.89      0.87      0.87     32175
+  samples avg       0.92      0.92      0.92     32175
+
+
+ toxic
+[[25596   359]
+ [ 1544  1224]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26979   206]
+ [  745   793]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[26973   306]
+ [  954   490]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[ 1364  1556]
+ [  351 25452]]
+
+Macro ROC_AUC Score = 0.6227164179681296
+
+
+    -stemmed_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.82      0.49      0.61      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.78      0.59      0.67      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.69      0.44      0.54      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.95      0.99      0.97     25803
+
+    micro avg       0.93      0.88      0.90     32175
+    macro avg       0.46      0.36      0.40     32175
+ weighted avg       0.90      0.88      0.89     32175
+  samples avg       0.93      0.93      0.93     32175
+
+
+ toxic
+[[25655   300]
+ [ 1412  1356]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26932   253]
+ [  627   911]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[26987   292]
+ [  806   638]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[ 1512  1408]
+ [  302 25501]]
+
+Macro ROC_AUC Score = 0.6427553732712633
+
+
+    -stemmed_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.78      0.43      0.56      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.79      0.50      0.61      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.64      0.37      0.46      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.94      0.99      0.96     25803
+
+    micro avg       0.92      0.87      0.89     32175
+    macro avg       0.45      0.33      0.37     32175
+ weighted avg       0.89      0.87      0.87     32175
+  samples avg       0.92      0.92      0.92     32175
+
+
+ toxic
+[[25608   347]
+ [ 1566  1202]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26976   209]
+ [  773   765]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[26979   300]
+ [  916   528]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[ 1340  1580]
+ [  340 25463]]
+
+Macro ROC_AUC Score = 0.6222122331818787
+
+  -Tfidf
+
+
+    -lemmatized_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.87      0.65      0.75      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.81      0.75      0.78      1538
+       threat       0.86      0.07      0.13        83
+       insult       0.71      0.61      0.66      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.96      0.99      0.98     25803
+
+    micro avg       0.94      0.91      0.93     32175
+    macro avg       0.60      0.44      0.47     32175
+ weighted avg       0.92      0.91      0.91     32175
+  samples avg       0.95      0.94      0.94     32175
+
+
+ toxic
+[[25674   281]
+ [  956  1812]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26921   264]
+ [  381  1157]]
+
+ threat
+[[28639     1]
+ [   77     6]]
+
+ insult
+[[26916   363]
+ [  563   881]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[ 1971   949]
+ [  268 25535]]
+
+Macro ROC_AUC Score = 0.6942881433680178
+
+
+    -lemmatized_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.85      0.64      0.73      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.78      0.73      0.76      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.63      0.53      0.58      1444
+identity_hate       0.53      0.04      0.07       270
+  no_toxicity       0.96      0.99      0.98     25803
+
+    micro avg       0.93      0.91      0.92     32175
+    macro avg       0.54      0.42      0.44     32175
+ weighted avg       0.92      0.91      0.91     32175
+  samples avg       0.94      0.94      0.94     32175
+
+
+ toxic
+[[25633   322]
+ [ 1001  1767]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26861   324]
+ [  408  1130]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[26835   444]
+ [  678   766]]
+
+ identity_hate
+[[28444     9]
+ [  260    10]]
+
+ no_toxicity
+[[ 1949   971]
+ [  299 25504]]
+
+Macro ROC_AUC Score = 0.6825397414657746
+
+
+    -stemmed_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.87      0.65      0.75      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.82      0.75      0.78      1538
+       threat       0.75      0.07      0.13        83
+       insult       0.70      0.61      0.65      1444
+identity_hate       0.41      0.04      0.07       270
+  no_toxicity       0.96      0.99      0.98     25803
+
+    micro avg       0.94      0.91      0.93     32175
+    macro avg       0.64      0.45      0.48     32175
+ weighted avg       0.92      0.91      0.92     32175
+  samples avg       0.95      0.94      0.94     32175
+
+
+ toxic
+[[25675   280]
+ [  955  1813]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26924   261]
+ [  379  1159]]
+
+ threat
+[[28638     2]
+ [   77     6]]
+
+ insult
+[[26908   371]
+ [  567   877]]
+
+ identity_hate
+[[28437    16]
+ [  259    11]]
+
+ no_toxicity
+[[ 1989   931]
+ [  266 25537]]
+
+Macro ROC_AUC Score = 0.6975118993403472
+
+
+    -stemmed_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.85      0.64      0.73      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.78      0.76      0.77      1538
+       threat       1.00      0.04      0.07        83
+       insult       0.64      0.55      0.59      1444
+identity_hate       0.65      0.05      0.09       270
+  no_toxicity       0.96      0.99      0.98     25803
+
+    micro avg       0.94      0.91      0.92     32175
+    macro avg       0.70      0.43      0.46     32175
+ weighted avg       0.92      0.91      0.91     32175
+  samples avg       0.94      0.94      0.94     32175
+
+
+ toxic
+[[25642   313]
+ [  985  1783]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[26857   328]
+ [  376  1162]]
+
+ threat
+[[28640     0]
+ [   80     3]]
+
+ insult
+[[26841   438]
+ [  654   790]]
+
+ identity_hate
+[[28446     7]
+ [  257    13]]
+
+ no_toxicity
+[[ 1995   925]
+ [  304 25499]]
+
+Macro ROC_AUC Score = 0.6901477614852334
+
+  -Doc2Vec
+
+
+    -lemmatized_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.00      0.00      0.00      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.00      0.00      0.00      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.00      0.00      0.00      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.90      1.00      0.95     25803
+
+    micro avg       0.90      0.80      0.85     32175
+    macro avg       0.13      0.14      0.14     32175
+ weighted avg       0.72      0.80      0.76     32175
+  samples avg       0.90      0.90      0.90     32175
+
+
+ toxic
+[[25955     0]
+ [ 2768     0]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[27185     0]
+ [ 1538     0]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[27279     0]
+ [ 1444     0]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[    0  2920]
+ [    0 25803]]
+
+Macro ROC_AUC Score = 0.5
+
+
+    -lemmatized_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.00      0.00      0.00      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.00      0.00      0.00      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.00      0.00      0.00      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.90      1.00      0.95     25803
+
+    micro avg       0.90      0.80      0.85     32175
+    macro avg       0.13      0.14      0.14     32175
+ weighted avg       0.72      0.80      0.76     32175
+  samples avg       0.90      0.90      0.90     32175
+
+
+ toxic
+[[25955     0]
+ [ 2768     0]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[27185     0]
+ [ 1538     0]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[27279     0]
+ [ 1444     0]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[    0  2920]
+ [    0 25803]]
+
+Macro ROC_AUC Score = 0.5
+
+
+    -stemmed_with_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.00      0.00      0.00      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.00      0.00      0.00      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.00      0.00      0.00      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.90      1.00      0.95     25803
+
+    micro avg       0.90      0.80      0.85     32175
+    macro avg       0.13      0.14      0.14     32175
+ weighted avg       0.72      0.80      0.76     32175
+  samples avg       0.90      0.90      0.90     32175
+
+
+ toxic
+[[25955     0]
+ [ 2768     0]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[27185     0]
+ [ 1538     0]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[27279     0]
+ [ 1444     0]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[    0  2920]
+ [    0 25803]]
+
+Macro ROC_AUC Score = 0.5
+
+
+    -stemmed_without_stopwords:
+               precision    recall  f1-score   support
+
+        toxic       0.00      0.00      0.00      2768
+ severe_toxic       0.00      0.00      0.00       269
+      obscene       0.00      0.00      0.00      1538
+       threat       0.00      0.00      0.00        83
+       insult       0.00      0.00      0.00      1444
+identity_hate       0.00      0.00      0.00       270
+  no_toxicity       0.90      1.00      0.95     25803
+
+    micro avg       0.90      0.80      0.85     32175
+    macro avg       0.13      0.14      0.14     32175
+ weighted avg       0.72      0.80      0.76     32175
+  samples avg       0.90      0.90      0.90     32175
+
+
+ toxic
+[[25955     0]
+ [ 2768     0]]
+
+ severe_toxic
+[[28454     0]
+ [  269     0]]
+
+ obscene
+[[27185     0]
+ [ 1538     0]]
+
+ threat
+[[28640     0]
+ [   83     0]]
+
+ insult
+[[27279     0]
+ [ 1444     0]]
+
+ identity_hate
+[[28453     0]
+ [  270     0]]
+
+ no_toxicity
+[[    0  2920]
+ [    0 25803]]
+
+Macro ROC_AUC Score = 0.5
+
+
+Done!!!!!!!!!!!!!
