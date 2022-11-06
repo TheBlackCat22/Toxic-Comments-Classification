@@ -50,8 +50,6 @@ def get_best_classifier(X_train, y_train, for_doc2vec=False):
         parameters.pop(1)
         parameters.pop(-1)
 
-    print(parameters)
-
     max_f1 = 0
     for params in parameters:
         clf = params.pop('clf')
@@ -155,6 +153,7 @@ def get_predictions(X_val, model_dict):
 
 
 def validate_classifiers(y_val, vector_dict, results_dict):
+    results = {}
     preprocessing_types = list(results_dict.keys())
     labels = list(results_dict[preprocessing_types[0]].keys())
     for preprocessing_type in preprocessing_types:
@@ -162,6 +161,8 @@ def validate_classifiers(y_val, vector_dict, results_dict):
         _, X_val, _ = vector_dict[preprocessing_type]
         predictions = get_predictions(X_val, model_dict)
         print(f'\n\n    -{preprocessing_type}:')
+        results[preprocessing_type] = classification_report(y_val, predictions,
+              output_dict=True, target_names=labels, zero_division=0)
         print(classification_report(y_val, predictions,
               output_dict=False, target_names=labels, zero_division=0))
         cfms = multilabel_confusion_matrix(y_val, predictions)
@@ -170,3 +171,4 @@ def validate_classifiers(y_val, vector_dict, results_dict):
             print(cfms[i])
         print(
             f"\nMacro ROC_AUC Score = {roc_auc_score(y_val, predictions, average='macro')}")
+    return results
