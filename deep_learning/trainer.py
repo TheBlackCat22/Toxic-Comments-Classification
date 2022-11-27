@@ -12,7 +12,7 @@ def train(train_dataloader, model, criterion, optimizer, writer, epoch, device):
         torch.nn.utils.clip_grad_norm_(model.parameters(), 0.1)
         optimizer.step()
         optimizer.zero_grad()
-        if idx%50 == 0:
+        if idx%250 == 0:
             with torch.no_grad():
                 metrics = calculate_metrics(label.detach().cpu().numpy(), (preds.detach().cpu().numpy()>0.5)*1)
                 writer.add_scalar('Train Batch Loss', loss, epoch*len(train_dataloader) + idx)

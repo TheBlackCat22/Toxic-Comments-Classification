@@ -33,10 +33,11 @@ print("------------------------------------------------------------------")
 X_train, X_val, y_train, y_val = train_test_split(
     train_df.iloc[:, :2], train_df.iloc[:, 2:], test_size=0.2, random_state=42, stratify=(train_df["no_toxicity"].values))
 
+print("Train Data")
 train_dataset = dataset.Toxic_Comment_Dataset(X_train, y_train)
-val_dataset = dataset.Toxic_Comment_Dataset(X_val, y_val)
-
 print("Train Size:", len(train_dataset))
+print("\nVal Data")
+val_dataset = dataset.Toxic_Comment_Dataset(X_val, y_val)
 print("Val Size:", len(val_dataset))
 
 
@@ -75,6 +76,7 @@ writer = SummaryWriter()
 for epoch in tqdm(range(0, args.num_epochs), desc="Epochs", unit="epoch"):
     trainer.train(train_loader, model, criterion, optimizer, writer, epoch, device)
     trainer.evaluate(val_loader, model, criterion, writer, epoch, device)
+    scheduler.step()
 
 writer.close()
 
