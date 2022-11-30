@@ -1,6 +1,7 @@
 import torch
 from sklearn.metrics import classification_report, accuracy_score, roc_auc_score
-import json
+
+import utils
 
 def train(train_dataloader, model, criterion, optimizer, writer, epoch, device):
     model.train()
@@ -30,7 +31,7 @@ def evaluate(val_dataloader, model, criterion, writer, epoch, device):
             loss = criterion(preds, label)
             metrics = calculate_metrics(label.detach().cpu().numpy(), (preds.detach().cpu().numpy()>0.5)*1)
             writer.add_scalar('Val Accuracy', metrics["accuracy"], epoch*len(val_dataloader) + idx)
-            writer.add_text(f"Val Metrics", pretty_json(metrics["report"]), epoch)
+            writer.add_text(f"Val Metrics", utils.pretty_json(metrics["report"]), epoch)
             writer.add_scalar('Val Loss', loss, epoch*len(val_dataloader) + idx)
     
 
@@ -47,8 +48,3 @@ def calculate_metrics(true, preds):
         "micro_f1": report['micro avg']["f1-score"]
     }
     return results
-
-
-def pretty_json(hp):
-  json_hp = json.dumps(hp, indent=2)
-  return "".join("\t" + line for line in json_hp.splitlines(True))

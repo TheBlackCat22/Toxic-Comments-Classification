@@ -1,4 +1,5 @@
 import csv
+import json
 import pandas as pd
 import contractions
 import re
@@ -165,3 +166,8 @@ def text_preprocessor(data):
     print("  -Lemmatized")
 
     return data
+
+
+def pretty_json(hp):
+  json_hp = json.dumps(hp, indent=2)
+  return "".join("\t" + line for line in json_hp.splitlines(True))

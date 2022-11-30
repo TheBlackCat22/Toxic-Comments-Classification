@@ -19,10 +19,6 @@ class net_1(nn.Module):
             nn.Linear(32, 16),
             nn.ReLU()
         )
-        self.fc_block3 = nn.Sequential(
-            nn.Linear(16, 8),
-            nn.ReLU()
-        )
         self.output_block = nn.Sequential(
             nn.Linear(16, num_class),
             nn.Sigmoid()
@@ -32,7 +28,6 @@ class net_1(nn.Module):
         embedded = self.embedding(text, offsets)
         outs = self.fc_block1(embedded)
         outs = self.fc_block2(outs)
-        # outs = self.fc_block3(outs)
         outs = self.output_block(outs)
         return outs
 
@@ -82,7 +77,6 @@ class net_4(nn.Module):
         self.q = nn.Linear(embed_dim, embed_dim)
         self.k = nn.Linear(embed_dim, embed_dim)
         self.v = nn.Linear(embed_dim, embed_dim)
-        self.attention = nn.MultiheadAttention(embed_dim, 1)
         self.fc = nn.Linear(embed_dim, embed_dim)
         self.output_block = nn.Sequential(
             nn.Linear(embed_dim, num_class),
@@ -100,11 +94,11 @@ class net_4(nn.Module):
         values = self.v(embedded)
         querys = self.q(embedded)
         
-        outs, _ = self.attention(querys, keys, values)
-
-        outs = outs + embedded
+        scores = self.get_scores(querys, keys)
+        outs = torch.matmul(scores.to('cuda'), values) + embedded
         outs = nn.functional.normalize(outs, dim=2)
-        outs = self.fc(outs) + outs
+
+        outs = outs + self.fc(outs)
         outs = nn.functional.normalize(outs, dim=2)
         outs = outs[:, -1, :]
 
@@ -112,18 +106,18 @@ class net_4(nn.Module):
 
         return outs
     
-    # def get_scores(self, query, keys):
-    #     scores = []
-    #     for q, k in zip(query, keys):
-    #         mat = torch.matmul(q, k.T).tolist()
-    #         for i in range(len(mat)):
-    #             for j in range(len(mat)):
-    #                 if j>i:
-    #                     mat[i][j] = -float("inf")
-    #         scores.append(mat)
-    #     scores = torch.tensor(scores)/query.shape[2]**0.5
-    #     scores = nn.functional.softmax(scores, 2)
-    #     return scores
+    def get_scores(self, query, keys):
+        scores = []
+        for q, k in zip(query, keys):
+            mat = torch.matmul(q, k.T).tolist()
+            for i in range(len(mat)):
+                for j in range(len(mat)):
+                    if j>i:
+                        mat[i][j] = -float("inf")
+            scores.append(mat)
+        scores = torch.tensor(scores)/query.shape[2]**0.5
+        scores = nn.functional.softmax(scores, 2)
+        return scores
 
 
 if __name__ == "__main__":
